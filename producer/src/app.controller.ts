@@ -6,6 +6,7 @@ export class AppController {
   constructor(
     @Inject('WORKFLOW_RMQ_SERVICE') private wfClient: ClientProxy,
     @Inject('APPROVE_RMQ_SERVICE') private approveClient: ClientProxy,
+    @Inject('APPROVE_2_RMQ_SERVICE') private approve2Client: ClientProxy,
   ) {}
 
   @Get('workflow-1')
@@ -36,6 +37,19 @@ export class AppController {
   @Get('approve-3')
   callApprove3() {
     this.approveClient.emit(
+      {
+        exchange: 'approval-exchange',
+        routingKey: 'approval-handler-three',
+      },
+
+      'Hello',
+    );
+  }
+
+  @Get('consumer-2')
+  callApprove4() {
+    console.log('akdjfkdj');
+    this.approve2Client.emit(
       {
         exchange: 'approval-exchange',
         routingKey: 'approval-handler-three',

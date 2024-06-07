@@ -5,7 +5,7 @@ import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const queues = ['workflow-queue', 'approve-queue'];
+  const queues = ['workflow-2-queue', 'approve-2-queue'];
 
   queues.forEach((q) =>
     app
@@ -22,6 +22,6 @@ async function bootstrap() {
       .listen(),
   );
 
-  await app.listen(4000);
+  await app.listen(5000);
 }
 bootstrap();

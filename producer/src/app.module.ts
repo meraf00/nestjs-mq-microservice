@@ -22,6 +22,15 @@ import { AppController } from './app.controller';
           queue: 'approve-queue',
         },
       },
+
+      {
+        name: 'APPROVE_2_RMQ_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'],
+          queue: 'approve-2-queue',
+        },
+      },
     ]),
   ],
   controllers: [AppController],
